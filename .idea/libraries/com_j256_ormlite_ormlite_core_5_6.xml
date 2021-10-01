@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="com.j256.ormlite:ormlite-core:5.6" type="repository">
+    <properties maven-id="com.j256.ormlite:ormlite-core:5.6" />
+    <ANNOTATIONS>
+      <root url="file://$MAVEN_REPOSITORY$/com/j256/ormlite/ormlite-jdbc" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/j256/ormlite/ormlite-core/5.6/ormlite-core-5.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
