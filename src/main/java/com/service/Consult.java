@@ -1,8 +1,8 @@
-package main.java.service;
+package com.service;
 
+import com.Db.DbManager;
+import com.models.ProductDao;
 import lombok.Getter;
-import Db.DbManager;
-import main.java.models.ProductDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +20,10 @@ public class Consult {
     }
 
     public void getHelp() {
-        System.out.printf("Hello, i`m your consult %s , what you looking for?", name);
+        System.out.printf("Hello, i`m your consult %s , what you looking for?\n", name);
         System.out.println("What's type of sex shoe type do you need");
         String article = in.next();
-        dbManager.getProductInfo(article);
+        System.out.println(dbManager.getProductInfo(article));
 
     }
     public void getAllDamsShoes(){

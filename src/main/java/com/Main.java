@@ -1,5 +1,7 @@
-import main.java.service.Consult;
-import service.ProductManager;
+package com;
+
+import com.service.Consult;
+import com.service.ProductManager;
 
 public class Main {
 

@@ -29,7 +29,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>Main</mainClass>
+                                    <mainClass>com.Main</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
@@ -43,6 +43,11 @@
     </build>
 
     <dependencies>
+        <dependency>
+        <groupId>org.xerial</groupId>
+        <artifactId>sqlite-jdbc</artifactId>
+        <version>3.34.0</version>
+        </dependency>
         <dependency>
             <groupId>com.j256.ormlite</groupId>
             <artifactId>ormlite-jdbc</artifactId>
@@ -84,6 +89,6 @@
         </repository>
     </repositories>
     <properties>
-        <exec.mainClass>Main</exec.mainClass>
+        <exec.mainClass>com.Main</exec.mainClass>
     </properties>
 </project>

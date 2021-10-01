@@ -1,7 +1,7 @@
-package service;
+package com.service;
 
 
-import Db.DbManager;
+import com.Db.DbManager;
 
 public class ProductManager {
     DbManager dbManager = DbManager.getInstance();

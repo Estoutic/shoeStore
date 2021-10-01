@@ -1,4 +1,4 @@
-package main.java.models;
+package com.models;
 
 import com.j256.ormlite.field.DatabaseField;
 import lombok.Getter;
