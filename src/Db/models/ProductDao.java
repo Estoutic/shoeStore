@@ -1,4 +1,4 @@
-package Db;
+package Db.models;
 
 import com.j256.ormlite.field.DatabaseField;
 import lombok.Getter;

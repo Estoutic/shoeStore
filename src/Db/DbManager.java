@@ -1,6 +1,6 @@
 package Db;
 
-
+import Db.models.ProductDao;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
@@ -9,6 +9,7 @@ import com.j256.ormlite.table.TableUtils;
 import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class DbManager {
     private ConnectionSource connection;
@@ -59,27 +60,44 @@ public class DbManager {
         } catch (SQLException e) {
             log.error(e);
         }
-
         return null;
     }
-
-    public void updateProduct(String article, Integer numberPair, Integer price) {
-        Dao<ProductDao, String> productManager = DaoManager.lookupDao(connection, ProductDao.class);
-        ProductDao productsDao = getProductInfo(article);
-        if (productsDao == null) return;
-        if (numberPair != null) {
-            productsDao.setNumberPair(numberPair);
-        }
-        if (price != null) {
-            productsDao.setPrice(price);
-        }
+    public List<ProductDao> getAllProductInfo(){
+        Dao<ProductDao, String> productDaos = DaoManager.lookupDao(connection, ProductDao.class);
         try {
-            productManager.update(productsDao);
+            return productDaos.queryForAll();
         } catch (SQLException e) {
             log.error(e);
         }
-
-
+        return null;
     }
-
+//    public DamsProductDao getDamsProduct(String name, Integer size){
+//        Dao<DamsProductDao, String> damsProductDaos= DaoManager.lookupDao(connection, DamsProductDao.class);
+//        try {
+//            return damsProductDaos.queryForId(name);
+//        } catch (SQLException e) {
+//            log.error(e);
+//        }
+//
+//        return null;
+//
+//
+//    }
+//
+//    public void updateProduct(String article, Integer numberPair, Integer price) {
+//        Dao<ProductDao, String> productManager = DaoManager.lookupDao(connection, ProductDao.class);
+//        ProductDao productsDao = getProductInfo(article);
+//        if (productsDao == null) return;
+//        if (numberPair != null) {
+//            productsDao.setNumberPair(numberPair);
+//        }
+//        if (price != null) {
+//            productsDao.setPrice(price);
+//        }
+//        try {
+//            productManager.update(productsDao);
+//        } catch (SQLException e) {
+//            log.error(e);
+//        }
+//    }
 }

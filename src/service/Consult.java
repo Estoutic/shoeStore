@@ -1,25 +1,44 @@
 package service;
 
 import Db.DbManager;
+import Db.models.ProductDao;
 import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 @Getter
 public class Consult {
-    private String name;
+    private final String name;
     DbManager dbManager = DbManager.getInstance();
     Scanner in = new Scanner(System.in);
-    public Consult(){
+    List<ProductDao> result;
+    public Consult() {
         this.name = "Natasha";
-
+        this.result = new ArrayList<>();
     }
-    public void getHelp(){
-        System.out.println(String.format("Hello, i`m your consult !s , what you looking for?",name));
+
+    public void getHelp() {
+        System.out.printf("Hello, i`m your consult %s , what you looking for?", name);
         System.out.println("What's type of sex shoe type do you need");
         String article = in.next();
         dbManager.getProductInfo(article);
 
+    }
+    public void getAllDamsShoes(){
+        System.out.println("Please enter shoe name, what you want");
+        String shoesName = in.next();
+        System.out.println("Please enter shoe size, what you want");
+        int shoesSize = in.nextInt();
+        List<ProductDao> res = dbManager.getAllProductInfo();
+        for (ProductDao productDao:res){
+            if (productDao.getName().equals(shoesName) & productDao.getSize().equals(String.valueOf(shoesSize))){
+                result.add(productDao);
+            }else {
+                System.out.println("Sorry,but we haven't that what you need");
+            }
+        }
     }
 
 }
