@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class ProductDao {
-    @DatabaseField(id = true)
+    @DatabaseField
     public String article;
     @DatabaseField
     public String name;

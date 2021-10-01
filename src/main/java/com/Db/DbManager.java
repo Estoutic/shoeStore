@@ -17,6 +17,7 @@ public class DbManager {
     private static final String CON_STR = "jdbc:sqlite:C:\\Projects\\shoeStore\\shop.db";
     static Logger log = Logger.getLogger(DbManager.class);
 
+
     public static synchronized DbManager getInstance() {
         if (instance == null)
             instance = new DbManager();
@@ -47,24 +48,25 @@ public class DbManager {
         try {
             Dao<ProductDao, String> stringDao = DaoManager.createDao(connection, ProductDao.class);
             stringDao.create(productDao);
-            stringDao.queryForId(article);
-        } catch (SQLException e) {
-            log.error(e);
-        }
-    }
 
-    public ProductDao getProductInfo(String article) {
-        Dao<ProductDao, String> productDaos = DaoManager.lookupDao(connection, ProductDao.class);
-        try {
-            return productDaos.queryForId(article);
         } catch (SQLException e) {
             log.error(e);
         }
-        return null;
     }
+//
+//    public ProductDao getProductInfo(String article) {
+//        Dao<ProductDao, String> productDaos = DaoManager.lookupDao(connection, ProductDao.class);
+//        try {
+//            return productDaos.queryForId(article);
+//        } catch (SQLException e) {
+//            log.error(e);
+//        }
+//        return null;
+//    }
 
     public List<ProductDao> getAllProductInfo() {
         Dao<ProductDao, String> productDaos = DaoManager.lookupDao(connection, ProductDao.class);
+
         try {
             return productDaos.queryForAll();
         } catch (SQLException e) {

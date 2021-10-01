@@ -9,7 +9,8 @@ public class Main {
         Consult consult = new Consult();
         ProductManager productManager = new ProductManager();
         productManager.deliveryOfGoods("D", "shale", 38, 12, 2000);
+        productManager.deliveryOfGoods("D", "bots", 44, 8, 15000);
+//        consult.getAllDamsShoes();
         consult.getHelp();
-
     }
 }
