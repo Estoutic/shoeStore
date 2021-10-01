@@ -1,4 +1,4 @@
-import service.Consult;
+import main.java.service.Consult;
 import service.ProductManager;
 
 public class Main {

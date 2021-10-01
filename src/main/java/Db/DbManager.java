@@ -1,6 +1,6 @@
 package Db;
 
-import Db.models.ProductDao;
+import main.java.models.ProductDao;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
@@ -14,7 +14,7 @@ import java.util.List;
 public class DbManager {
     private ConnectionSource connection;
     private static DbManager instance = null;
-    private static final String CON_STR = "jdbc:sqlite:C:/Projects/Task/src/Db/shop.db";
+    private static final String CON_STR = "jdbc:sqlite:C:/Projects/Task/src/main/resources/shop.db";
     static Logger log = Logger.getLogger(DbManager.class);
 
 
@@ -24,7 +24,7 @@ public class DbManager {
         return instance;
     }
 
-    private DbManager() {
+    public DbManager() {
         try {
             this.connection = new JdbcPooledConnectionSource(CON_STR);
         } catch (SQLException e) {

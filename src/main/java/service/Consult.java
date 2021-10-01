@@ -1,8 +1,8 @@
-package service;
+package main.java.service;
 
-import Db.DbManager;
-import Db.models.ProductDao;
 import lombok.Getter;
+import Db.DbManager;
+import main.java.models.ProductDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +35,12 @@ public class Consult {
         for (ProductDao productDao:res){
             if (productDao.getName().equals(shoesName) & productDao.getSize().equals(String.valueOf(shoesSize))){
                 result.add(productDao);
-            }else {
-                System.out.println("Sorry,but we haven't that what you need");
             }
+        }
+        if (result.size() == 0){
+            System.out.println("Sorry, but we haven't shoes what you want");
+        }else{
+            System.out.println(result);
         }
     }
 
