@@ -36,7 +36,7 @@ public class DbManager {
         }
     }
 
-    public void insertProduct(String article,String name, Integer size, Integer numberPair,Integer price) {
+    public void insertProduct(String article, String name, Integer size, Integer numberPair, Integer price) {
         ProductDao productDao = new ProductDao();
         productDao.setArticle(article);
         productDao.setName(name);
@@ -63,10 +63,10 @@ public class DbManager {
         return null;
     }
 
-    public void updateProduct(String article, Integer size, Integer numberPair,Integer price) {
+    public void updateProduct(String article, Integer numberPair, Integer price) {
         Dao<ProductDao, String> productManager = DaoManager.lookupDao(connection, ProductDao.class);
         ProductDao productsDao = getProductInfo(article);
-        if (productsDao == null)return;
+        if (productsDao == null) return;
         if (numberPair != null) {
             productsDao.setNumberPair(numberPair);
         }
@@ -80,16 +80,6 @@ public class DbManager {
         }
 
 
-    }
-    public ProductDao getAllProductInfo(String article) {
-        Dao<ProductDao, String> productDaos = DaoManager.lookupDao(connection, ProductDao.class);
-        try {
-            return productDaos.queryForId(article);
-        } catch (SQLException e) {
-            log.error(e);
-        }
-
-        return null;
     }
 
 }

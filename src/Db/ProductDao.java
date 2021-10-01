@@ -1,6 +1,5 @@
 package Db;
 
-
 import com.j256.ormlite.field.DatabaseField;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
