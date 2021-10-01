@@ -23,7 +23,13 @@ public class Consult {
         System.out.printf("Hello, i`m your consult %s , what you looking for?\n", name);
         System.out.println("What's type of sex shoe type do you need");
         String article = in.next();
-        System.out.println(dbManager.getProductInfo(article));
+        ProductDao productDao = dbManager.getProductInfo(article);
+        System.out.printf(" article : %s\n name : %s\n size: %s\n numberPair: %s\n price: %s\n",
+                productDao.getArticle(),
+                productDao.getName(),
+                productDao.getSize(),
+                productDao.getNumberPair(),
+                productDao.getPrice());
 
     }
     public void getAllDamsShoes(){
