@@ -1,11 +1,13 @@
 package com.Db;
 
-import com.models.ProductDao;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
+import com.j256.ormlite.stmt.PreparedQuery;
+import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.models.ProductDao;
 import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
@@ -48,25 +50,13 @@ public class DbManager {
         try {
             Dao<ProductDao, String> stringDao = DaoManager.createDao(connection, ProductDao.class);
             stringDao.create(productDao);
-
         } catch (SQLException e) {
             log.error(e);
         }
     }
-//
-//    public ProductDao getProductInfo(String article) {
-//        Dao<ProductDao, String> productDaos = DaoManager.lookupDao(connection, ProductDao.class);
-//        try {
-//            return productDaos.queryForId(article);
-//        } catch (SQLException e) {
-//            log.error(e);
-//        }
-//        return null;
-//    }
 
     public List<ProductDao> getAllProductInfo() {
         Dao<ProductDao, String> productDaos = DaoManager.lookupDao(connection, ProductDao.class);
-
         try {
             return productDaos.queryForAll();
         } catch (SQLException e) {
@@ -74,33 +64,34 @@ public class DbManager {
         }
         return null;
     }
-//    public DamsProductDao getDamsProduct(String name, Integer size){
-//        Dao<DamsProductDao, String> damsProductDaos= DaoManager.lookupDao(connection, DamsProductDao.class);
-//        try {
-//            return damsProductDaos.queryForId(name);
-//        } catch (SQLException e) {
-//            log.error(e);
-//        }
-//
-//        return null;
-//
-//
-//    }
-//
-//    public void updateProduct(String article, Integer numberPair, Integer price) {
-//        Dao<ProductDao, String> productManager = DaoManager.lookupDao(connection, ProductDao.class);
-//        ProductDao productsDao = getProductInfo(article);
-//        if (productsDao == null) return;
-//        if (numberPair != null) {
-//            productsDao.setNumberPair(numberPair);
-//        }
-//        if (price != null) {
-//            productsDao.setPrice(price);
-//        }
-//        try {
-//            productManager.update(productsDao);
-//        } catch (SQLException e) {
-//            log.error(e);
-//        }
-//    }
+
+    public List<ProductDao> getDamsProduct(Integer size) {
+        Dao<ProductDao, String> damsProductDaos = DaoManager.lookupDao(connection, ProductDao.class);
+        Where<ProductDao, String> where = damsProductDaos.queryBuilder().where();
+
+        try {
+            where.eq("size", size).and().eq("article", "D");
+            PreparedQuery<ProductDao> productDaoPreparedQuery = damsProductDaos.queryBuilder().prepare();
+            List<ProductDao> res = damsProductDaos.query(productDaoPreparedQuery);
+            return res;
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        return null;
+    }
+
+    public List<ProductDao> getArticleShoes(String article) {
+        Dao<ProductDao, String> damsProductDaos = DaoManager.lookupDao(connection, ProductDao.class);
+        Where<ProductDao, String> where = damsProductDaos.queryBuilder().where();
+
+        try {
+            where.eq("article", article);
+            PreparedQuery<ProductDao> productDaoPreparedQuery = damsProductDaos.queryBuilder().prepare();
+            List<ProductDao> result = damsProductDaos.query(productDaoPreparedQuery);
+            return result;
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        return null;
+    }
 }

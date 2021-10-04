@@ -10,14 +10,15 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProductDao {
     @DatabaseField
-    public String article;
+    private String article;
     @DatabaseField
-    public String name;
+    private String name;
     @DatabaseField
-    public Integer size;
+    private Integer size;
     @DatabaseField
-    public Integer numberPair;
+    private Integer numberPair;
     @DatabaseField
-    public Integer price;
-
+    private Integer price;
+    @DatabaseField(generatedId = true, allowGeneratedIdInsert = true)
+    private Integer id;
 }
