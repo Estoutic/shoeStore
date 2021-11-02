@@ -1,4 +1,4 @@
-package com.Db;
+package com.db;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
@@ -55,15 +55,6 @@ public class DbManager {
         }
     }
 
-    public List<ProductDao> getAllProductInfo() {
-        Dao<ProductDao, String> productDaos = DaoManager.lookupDao(connection, ProductDao.class);
-        try {
-            return productDaos.queryForAll();
-        } catch (SQLException e) {
-            log.error(e);
-        }
-        return null;
-    }
 
     public List<ProductDao> getDamsProduct(Integer size) {
         Dao<ProductDao, String> damsProductDaos = DaoManager.lookupDao(connection, ProductDao.class);
@@ -87,8 +78,7 @@ public class DbManager {
         try {
             where.eq("article", article);
             PreparedQuery<ProductDao> productDaoPreparedQuery = damsProductDaos.queryBuilder().prepare();
-            List<ProductDao> result = damsProductDaos.query(productDaoPreparedQuery);
-            return result;
+            return damsProductDaos.query(productDaoPreparedQuery);
         } catch (SQLException e) {
             log.error(e);
         }

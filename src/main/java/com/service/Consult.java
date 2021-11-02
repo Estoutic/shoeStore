@@ -1,6 +1,6 @@
 package com.service;
 
-import com.Db.DbManager;
+import com.db.DbManager;
 import com.models.ProductDao;
 import lombok.Getter;
 
